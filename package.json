@@ -9,6 +9,20 @@
   },
   "author": "Oussama Messaoudi",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oussamamessaoudi/fetch_react.git"
+  },
+  "keywords": [
+    "react",
+    "axios",
+    "superagent",
+    "fetch"
+  ],
+  "bugs": {
+    "url": "https://github.com/oussamamessaoudi/fetch_react/issues"
+  },
+  "homepage": "https://github.com/oussamamessaoudi/fetch_react#readme",
   "peerDependencies": {
     "react": "^16.8.0"
   },
