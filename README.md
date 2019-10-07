@@ -1,7 +1,7 @@
 # fetch-react
 
 
-Featching data using React Component.
+Fetching data using React Component.
 
 
 ## Installation
@@ -15,49 +15,45 @@ npm install @react-items/fetch --save
 
 ```jsx
 import React from 'react';
-import Fetch, {Initialize, Loading, Success, Error, NotConnected} from '@react-items/fetch';
+import Fetch, {Error, FetchContext, Success} from '@react-items/fetch';
+
+const defaultValues = {
+    Loading: <div>Loading</div>,
+    NotConnected: (response, status, httpStatus) => (
+        <div>
+            <div>NotConnected</div>
+            <div>{JSON.stringify(response)}</div>
+            <div>{status}</div>
+            <div>{httpStatus}</div>
+        </div>
+    )
+};
 
 const App = () => (
-    <div>
-            <Fetch url={'https://jsonplaceholder.typicode.com/todos/1'}>
-                <Initialize>
-                    <div>Loading</div>
-                </Initialize>
-                <Loading>
-                    <div>Loading</div>
-                </Loading>
-                <Success>
-                    {(response, status,  httpStatus)=>
-                        <div>
-                            <div>Success</div> 
-                            <div>{JSON.stringify(response)}</div>
-                            <div>{status}</div>
-                            <div>{httpStatus}</div>
-                        </div>
-                    }
-                </Success>
-                <Error>
-                    {(response, status,  httpStatus)=>
-                        <div>
-                            <div>Error</div>
-                            <div>{JSON.stringify(response)}</div>
-                            <div>{status}</div>
-                            <div>{httpStatus}</div>
-                        </div>
-                    }
-                </Error>
-                <NotConnected>
-                    {(response, status,  httpStatus)=>
-                        <div>
-                            <div>NotConnected</div>
-                            <div>{JSON.stringify(response)}</div>
-                            <div>{status}</div>
-                            <div>{httpStatus}</div>
-                        </div>
-                    }
-                </NotConnected>
-            </Fetch>
-    </div>
+    <FetchContext.Provider value={defaultValues}>
+        <Fetch url={'https://jsonplaceholder.typicode.com/todos/1'}>
+            <Success>
+                {(response, status, httpStatus) =>
+                    <div>
+                        <div>Success</div>
+                        <div>{JSON.stringify(response)}</div>
+                        <div>{status}</div>
+                        <div>{httpStatus}</div>
+                    </div>
+                }
+            </Success>
+            <Error>
+                {(response, status, httpStatus) =>
+                    <div>
+                        <div>Error</div>
+                        <div>{JSON.stringify(response)}</div>
+                        <div>{status}</div>
+                        <div>{httpStatus}</div>
+                    </div>
+                }
+            </Error>
+        </Fetch>
+    </FetchContext.Provider>
 );
 ```
 # Author
