@@ -1,8 +1,10 @@
-import React, {createElement} from "react";
-import BasicComponent from "./BasicComponent";
+import React from "react";
+import {IBasicComponentProps} from "./IBasicComponentProps";
+import {UseEhanceDefault} from "./UseEnhanceDefault";
 
-export function Error(props: any): JSX.Element {
-    return createElement(BasicComponent, props);
+
+export function Error(props: IBasicComponentProps): JSX.Element[] | JSX.Element {
+    return UseEhanceDefault(props);
 }
 
 
