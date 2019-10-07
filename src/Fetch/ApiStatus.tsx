@@ -3,5 +3,6 @@ export enum ApiStatus {
     SUCCESS = 'Success',
     ERROR = 'Error',
     CANCEL = 'Cancel',
-    LOADING = 'Loading'
+    LOADING = 'Loading',
+    NOT_CONNECTED = 'NotConnected'
 }

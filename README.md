@@ -15,28 +15,48 @@ npm install @react-items/fetch --save
 
 ```jsx
 import React from 'react';
-import Fetch, {Loading, Success, Error, Initialize} from '@react-items/fetch';
+import Fetch, {Initialize, Loading, Success, Error, NotConnected} from '@react-items/fetch';
 
 const App = () => (
     <div>
-        <Fetch url={'https://jsonplaceholder.typicode.com/todos/1'}>
-            <Initialize>
-                <div>"Initialize"</div>
-            </Initialize>
-
-            <Loading>
-                <div>"Loading"</div>
-            </Loading>
-
-            <Success>
-                <div>"Success"</div>
-            </Success>
-
-            <Error>
-                <div>"Error"</div>
-            </Error>
-
-        </Fetch>
+            <Fetch url={'https://jsonplaceholder.typicode.com/todos/1'}>
+                <Initialize>
+                    <div>Loading</div>
+                </Initialize>
+                <Loading>
+                    <div>Loading</div>
+                </Loading>
+                <Success>
+                    {(response, status,  httpStatus)=>
+                        <div>
+                            <div>Success</div> 
+                            <div>{JSON.stringify(response)}</div>
+                            <div>{status}</div>
+                            <div>{httpStatus}</div>
+                        </div>
+                    }
+                </Success>
+                <Error>
+                    {(response, status,  httpStatus)=>
+                        <div>
+                            <div>Error</div>
+                            <div>{JSON.stringify(response)}</div>
+                            <div>{status}</div>
+                            <div>{httpStatus}</div>
+                        </div>
+                    }
+                </Error>
+                <NotConnected>
+                    {(response, status,  httpStatus)=>
+                        <div>
+                            <div>NotConnected</div>
+                            <div>{JSON.stringify(response)}</div>
+                            <div>{status}</div>
+                            <div>{httpStatus}</div>
+                        </div>
+                    }
+                </NotConnected>
+            </Fetch>
     </div>
 );
 ```

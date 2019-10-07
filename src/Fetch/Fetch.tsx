@@ -1,4 +1,4 @@
-import React, {Children, useEffect, useState} from "react";
+import React, {Children, cloneElement, useEffect, useState} from "react";
 import Axios from "axios";
 //#########################################################
 import {IPropsFetch} from "./IPropsFetch";
@@ -33,9 +33,9 @@ const Fetch = ({url, children, data, fetchTypes = FetchTypes.AXIOS, headers, met
                 // handle error
                 if (!Axios.isCancel(thrown)) {
                     setState({
-                        status: ApiStatus.ERROR,
+                        status: thrown.response ? ApiStatus.ERROR : ApiStatus.NOT_CONNECTED,
                         response: thrown.response,
-                        httpStatus: thrown.response!!.status
+                        httpStatus: thrown.response && thrown.response.status
                     });
                 }
             });
@@ -56,7 +56,7 @@ const Fetch = ({url, children, data, fetchTypes = FetchTypes.AXIOS, headers, met
 
     const child = childrenMap[state.status];
     if (child)
-        return child;
+        return cloneElement(child, state);
     return null;
 };
 
