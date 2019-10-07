@@ -1,6 +1,6 @@
 {
   "name": "fetch-react",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "fetching using React component",
   "main": "dist/index.js",
   "scripts": {
@@ -9,7 +9,6 @@
   },
   "author": "Oussama Messaoudi",
   "license": "ISC",
-
   "peerDependencies": {
     "react": "^16.8.0"
   },
@@ -22,7 +21,11 @@
     "@babel/preset-react": "^7.0.0",
     "@babel/preset-typescript": "^7.6.0",
     "@types/react": "^16.9.5",
+    "eslint": "^3.19.0",
     "eslint-plugin-react-hooks": "^2.1.2",
     "typescript": "^3.6.3"
+  },
+  "dependencies": {
+    "axios": "^0.19.0"
   }
 }

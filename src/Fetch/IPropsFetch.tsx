@@ -7,5 +7,6 @@ export interface IPropsFetch {
     headers: object
     data: object
     children: object
-    fetchTypes: FetchTypes
+    fetchTypes: FetchTypes,
+    start: boolean
 }
