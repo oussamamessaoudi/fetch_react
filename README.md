@@ -8,18 +8,18 @@ Featching data using React Component.
 
 Add dependency to your project.
 ```sh
-npm install fetch-react --save
+npm install @react-items/fetch --save
 ```
     
 ## Quick Start
 
 ```jsx
 import React from 'react';
-import Fetch, {Loading, Success, Error, Initialize} from 'fetch-react';
+import Fetch, {Loading, Success, Error, Initialize} from '@react-items/fetch';
 
 const App = () => (
     <div>
-        <Fetch url={'https://jsonplaceholder.typicode.com/gtgt/1'}>
+        <Fetch url={'https://jsonplaceholder.typicode.com/todos/1'}>
             <Initialize>
                 <div>"Initialize"</div>
             </Initialize>
